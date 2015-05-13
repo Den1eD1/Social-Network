@@ -1,0 +1,28 @@
+.welcome-form {
+    float: left;
+    width: 400px;
+    background-color: #4E5D6C;
+    height: 450px;
+    text-align: center;
+}
+.left{
+    margin-left: 20%;
+    margin-right: 3%;
+    margin-top: 5%;
+}
+.right{
+    margin-top: 5%;
+}
+    .welcome-form legend {
+        text-align: center;
+    }
+
+h1 {
+    text-align: center;
+    border-bottom: 1px solid #4E5D6C;
+    width: 90%;
+    margin: 0 auto;
+}
+.radio {
+    display: inline-block;
+}
