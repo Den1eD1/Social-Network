@@ -1,6 +1,6 @@
-app.directive('welcomeDirective', function () {
+socialNetwork.directive('welcomeDirective', function () {
     return {
         restrict: 'E',
-        templateUrl: '../../templates/welcome.html'
+        templateUrl: 'templates/welcome.html'
     };
 })

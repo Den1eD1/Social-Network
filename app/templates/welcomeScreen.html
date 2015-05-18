@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Social Network</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/bootstrap-superhero.css"/>
+    <link rel="stylesheet" href="../styles/customStyle.css"/>
+    <style>
+        #welcome-header {
+            display: inline-block;
+            width: 100%;
+            height: 20px;
+        }
+            #welcome-header img {
+
+                float: left;
+            }
+        .nav-menu {
+            padding: 20px;
+            margin: 0px;
+        }
+        #searchBar {
+            float: right;
+            margin: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 20px;
+        }
+        #searchBar input {
+            -moz-border-radius: 10px -webkit-border-radius : 10 px;
+            -khtml-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+    <title></title>
+</head>
+<body>
+<div id="container">
+    <header id="welcome-header">
+        <img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xap1/v/t1.0-9/10247353_859699814048278_3466946420611867131_n.jpg?oh=562bf5966fe25ba8b59c76a7b7bd5ef6&oe=55CD59D0&__gda__=1443582988_c3cdce9ad2425fd3fbc32cfd5898ef7f" alt="" width="60px" height="60px"/>
+
+        <ul class="nav nav-pills">
+            <li  class="nav-menu"><a href="#"><span class="glyphicon glyphicon-envelope" style="font-size: 20px"></span> <span class="badge">42</span></a></li>
+            <li class="nav-menu"><a href="#">Profile <span class="badge"></span></a></li>
+            <li class="nav-menu"><a href="#">Messages <span class="badge">3</span></a></li>
+            <div id="searchBar">
+                <form id="newSearch" method="get" action="http://www.google.com">
+                    <input type="text" class="textInput" name="q" size="21" maxlength="120"><span class="glyphicon glyphicon-search"></span>
+                </form>
+                <div class="clear"></div>
+            </div>
+        </ul>
+
+    </header>
+</div>
+</body>
+</html>
