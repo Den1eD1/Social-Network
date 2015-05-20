@@ -1,4 +1,6 @@
-socialNetwork.controller('authenticationController', ['$scope','authentication', 'notifyService', function ($scope, authentication, notifyService) {
+socialNetwork.controller('authenticationController',
+        ['$scope','authentication', 'notifyService',
+        function ($scope, authentication, notifyService) {
 
     $scope.getActiveUser = function () {
         authentication.getMyData(
