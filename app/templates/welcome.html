@@ -9,14 +9,14 @@
            <div class="form-group">
                <label for="inputUsername" class="col-md-4 control-label">Username</label>
                <div class="col-md-6">
-                   <input ng-model="loginUsername" type="text" class="form-control" id="inputUsername" placeholder="Username">
+                   <input ng-model="loginData.username" type="text" class="form-control" id="inputUsername" placeholder="Username">
                </div>
 
            </div>
            <div class="form-group">
                <label for="inputPassword" class="col-md-4 control-label">Password</label>
                <div class="col-md-6">
-                   <input ng-model="loginPassword" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                   <input ng-model="loginData.password" type="password" class="form-control" id="inputPassword" placeholder="Password">
                </div>
            </div>
            <div class="form-group">
@@ -30,38 +30,38 @@
    </form>
    </section>
     <section class="welcome-form right">
-        <form class="form-horizontal">
+        <form class="form-horizontal" ng-controller="welcomeController" ng-submit="register()">
             <fieldset>
                 <legend>register</legend>
                 <div class="form-group">
                     <label for="regUsername" class="col-md-4 control-label">Username</label>
                     <div class="col-md-6">
-                        <input ng-model="regUsername" type="text" class="form-control" id="regUsername" placeholder="username">
+                        <input ng-model="registerData.username" type="text" class="form-control" id="regUsername" placeholder="username">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="regPassword" class="col-md-4 control-label">Password</label>
                     <div class="col-md-6">
-                        <input  ng-model="regPassword" type="password" class="form-control" id="regPassword" placeholder="Password">
+                        <input  ng-model="registerData.password" type="password" class="form-control" id="regPassword" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword" class="col-md-4 control-label">Confirm Password</label>
                     <div class="col-md-6">
-                        <input ng-model="confPassword" type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                        <input ng-model="registerData.confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Password">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="name" class="col-md-4 control-label">Name</label>
                     <div class="col-md-6">
-                        <input ng-model="name" type="text" class="form-control" id="name" placeholder="Email">
+                        <input ng-model="registerData.name" type="text" class="form-control" id="name" placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail" class="col-md-4 control-label">Email</label>
                     <div class="col-md-6">
-                        <input ng-model="email" type="text" class="form-control" id="inputEmail" placeholder="Email">
+                        <input ng-model="registerData.email" type="text" class="form-control" id="inputEmail" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
@@ -90,7 +90,7 @@
                 <div class="form-group">
                 <div class="col-md-6 col-lg-offset-4">
 
-                    <button ng-click="register()" type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
                 </div>
 </div>
             </fieldset>
