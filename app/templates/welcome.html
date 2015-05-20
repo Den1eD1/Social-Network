@@ -30,7 +30,7 @@
    </form>
    </section>
     <section class="welcome-form right">
-        <form class="form-horizontal" ng-controller="welcomeController" ng-submit="register()">
+        <form class="form-horizontal" ng-controller="authenticationController" ng-submit="register()">
             <fieldset>
                 <legend>register</legend>
                 <div class="form-group">
@@ -69,19 +69,19 @@
                     <div class="col-md-6">
                         <div class="radio">
                             <label>
-                                <input ng-model="male" type="radio" name="optionsRadios" id="male" value="male" checked="">
+                                <input ng-model="gender" type="radio" name="optionsRadios" id="male" value="0" checked="true">
                                 Male
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input ng-model="female" type="radio" name="optionsRadios" id="female" value="female">
+                                <input ng-model="gender" type="radio" name="optionsRadios" id="female" value="1">
                                 Female
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input ng-model="other" type="radio" name="optionsRadios" id="other" value="other">
+                                <input ng-model="gender" type="radio" name="optionsRadios" id="other" value="2">
                                 Other
                             </label>
                         </div>
