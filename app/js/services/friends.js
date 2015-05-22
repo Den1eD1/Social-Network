@@ -1,9 +1,9 @@
-socialNetwork.factory('friendsService', function ($http, baseServiceUrl) {
+socialNetwork.factory('friendsService',['$http', 'baseUrl', function ($http, baseUrl) {
     var friendsService = {};
-    var serviceUrl = baseServiceUrl;
+    var serviceUrl = baseUrl;
     var urlAttachment = '/me/requests';
 
-    serviceUrl.getFriendsRequests = function (success, error) {
+    friendsService.getFriendsRequests = function (success, error) {
       $http.get(serviceUrl + urlAttachment, {headers: this.getHeaders()})
           .success(function (data, status, headers, config) {
               success(data);
@@ -65,9 +65,9 @@ socialNetwork.factory('friendsService', function ($http, baseServiceUrl) {
 
     friendsService.getHeaders = function () {
         return {
-            Authorization: 'Bearer ' + localStorage['sessionToken']
+            Authorization: 'Bearer ' + localStorage['accessToken']
         };
     };
 
     return friendsService;
-});
+}]);

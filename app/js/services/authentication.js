@@ -39,16 +39,13 @@ socialNetwork.factory('authentication', function ($http, baseUrl) {
     };
 
     service.getMyData = function (success, error) {
-        $http.get(serviceUrl + '/me', {headers: this.getHeaders()})
-            .success(function (data) {
+        $http.get(serviceUrl + '/me', { headers: this.getHeaders() })
+            .success(function (data, status, headers, config) {
                 success(data);
-                console.log(data);
-            })
-            .error(function (errorData) {
-                console.log(errorData);
-                errorData(errorData)
-            })
-    }
+            }).error(function (data) {
+                error(data);
+            });
+    };
     
     service.searchUsers = function (id, success, error) {
         var urlAttachment = 'search?searchTerm=' + id;
@@ -75,8 +72,8 @@ socialNetwork.factory('authentication', function ($http, baseUrl) {
 
     service.SetCredentials = function (serverData) {
         localStorage['accessToken'] = serverData.access_token;
+        console.log(serverData.access_Token);
         localStorage['username'] = serverData.userName;
-
     };
 
     service.getHeaders = function () {
@@ -94,11 +91,25 @@ socialNetwork.factory('authentication', function ($http, baseUrl) {
     };
 
     service.setName = function (name) {
+
         localStorage['name'] = name;
     }
 
+    service.getName = function () {
+        return localStorage['name'];
+    }
     service.setProfileImage = function (profileImage) {
         localStorage['profileImage'] = profileImage;
+    }
+
+    service.setUserId = function (id) {
+        console.log(id);
+        console.log('trqbva gornoto da e ID');
+        localStorage['userId'] = id;
+    }
+
+    service.getUserId = function () {
+        return localStorage['userId'];
     }
 
     service.isLogged = function () {

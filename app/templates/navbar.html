@@ -1,59 +1,26 @@
-<div class="logo btn-primary">
-    <a href="#/"><img src="img/beer.png" /></a>
-    <span>Seems Legit Bro</span>
-</div>
-
-<header class="header" id="header" ng-if="isLogged">
-    <nav class="navbar btn-warning" id="navbar">
+<nav class="navbar navbar-default" ng-controller="mainController">
+    <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            <h4>Hello, {{name}}</h4>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <div class="image-container" id="userProfileImage">
-                        <img class="smallThumbnail" src="{{ profileImage }}"/>
-                    </div>
-                </li>
-                <li>
-                    <a class="navbar-brand" id="usernamePreview">
-                        <u>{{ name }}</u>
-                    </a>
-                </li>
-                <li><a href="#/">News Feed</a></li>
-                <li><a href="#/FriendRequests">Friend Requests</a></li>
-                <li><a href="#/EditProfile">Edit Profile</a></li>
-                <li><a href="#/ChangePassword">Change Password</a></li>
-            </ul>
 
-            <ul class="nav navbar-nav pull-right">
-                <li>
-                    <input type="text" id="searchBox" value="" ng-model="searchBox"/>
-                    <a id="searchButton" ng-href="#/Search/{{searchBox}}"><img src="img/search.png" alt=""></a>
-                </li>
-            </ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ng-controller="AuthenticationController"><a href="" style="color: #F96C65;" ng-click="logout()">Logout</a></li>
+                <li><object data="http://www.bdu.edu.et/emti/sites/bdu.edu.et.emti/files/default_images/no-profile-img.gif" type="image/gif">
+                    <img src="{{profileImage}}" />
+                </object></li>
+                <li><a href="#/wall"> <span class="glyphicon glyphicon-envelope"></span></a></li>
+                <li><a href="#/friends"> <span class="glyphicon glyphicon-user"></span></a></li>
+                <li><a href="#/editProfile"> <span class="glyphicon glyphicon-wrench"></span></a></li>
+                <li ng-controller="authenticationController"><a href="#/" ng-click="logout()"> <span class="glyphicon glyphicon-log-out"></span></a></li>
+
             </ul>
+            <form  class="navbar-form navbar-left" role="search">
+                <div id="searchBar" class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </form>
         </div>
-    </nav>
-</header>
-<div class="hover-box" style="visibility: hidden;">
-    <div ng-if="!hasLoadedPreview()">Loading...</div>
-    <div class="hover-profile-image" ng-if="hasLoadedPreview()">
-        <img class="thumbnail" src="{{userPreviewData.profileImageData}}"/>
     </div>
-    <div class="hover-profile-info" ng-if="hasLoadedPreview()">
-        <p class="hover-profile-name">{{userPreviewData.name}}</p>
-        <p>
-        <div class="btn btn-primary" ng-if="!isFriend() && !isFriendRequestSent()" ng-click="sendFriendRequest()">Invite</div>
-        <div class="btn btn-warning" ng-if="!isFriend() && isFriendRequestSent()">Friend request sent</div>
-        <div class="btn btn-info" ng-if="isFriend()">Friend</div>
-        </p>
-    </div>
-</div>
+</nav>

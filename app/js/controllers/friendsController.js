@@ -1,4 +1,9 @@
-socialNetwork.controller('friendsController', ['$scope', 'friendsService', 'notifyService', function ($scope, friendsService, notifyService) {
+socialNetwork.controller('friendsController', ['$scope', 'friendsService', 'notifyService', '$routeParams',
+    function ($scope, friendsService, notifyService, $routeParams) {
+
+        $scope.setCurrentUser = function () {
+            $scope.currentUser = $routeParams.id;
+        }
 
     $scope.getFriendsRequests = function () {
         friendsService.getFriendsRequests(function (serverData) {
@@ -28,15 +33,17 @@ socialNetwork.controller('friendsController', ['$scope', 'friendsService', 'noti
 
     $scope.getFriendsPreview = function () {
         friendsService.getFriendsPreview(function (serverData) {
-            $scope.friendsReview = serverData;
+            $scope.friendsPreview = serverData;
+                console.log(serverData);
         },
             function (serverError) {
-                notifyService('There was an error recieving friends review.');
+                notifyService.showError('There was an error receiving friends review.');
+                console.log(serverError);
             });
     };
 
     $scope.getFriendsDetails = function () {
-        friendsService.getFriendsDetails(function (sercerData) {
+        friendsService.getFriendsDetails(function (serverData) {
             $scope.friendsData = serverData;
         },
             function (serverError) {

@@ -1,9 +1,11 @@
 socialNetwork.controller('mainController',
     ['$scope', 'authentication', 'friendsService', '$routeParams','notifyService',
-        function ($scope, authentication, friendsSerice, $routeParams, notifyService) {
-            $scope.username = localStorage['username'];
+        function ($scope, authentication, friendsService, $routeParams, notifyService) {
+
+
+            $scope.username = authentication.getUsername();
             $scope.profileImage = localStorage['profileImage'];
-            $scope.name = localStorage['name'];
+            $scope.name = authentication.getName();
             $scope.isLogged = authentication.isLogged();
 
             $scope.search = function () {
@@ -15,6 +17,29 @@ socialNetwork.controller('mainController',
                     });
             };
 
+            $scope.wallData = function () {
+                authentication.getUserFullData($scope.username, function (serverData) {
+                    $scope.wall = serverData;
+                }, function (error) {
+                    console.log(error);
+                    notifyService.showError('there was an error showing your wall.');
+                })
+            }
+
+            $scope.initialiseWallOwnerData = function () {
+
+                authentication.getUserFullData($routeParams.id, function(serverData) {
+                    $scope.wallOwner = serverData;
+                    //$('#header').css('background-image', 'url(' + serverData.coverImageData + ')');
+                    $('.header').css('background-image', 'url(' + serverData.coverImageData + ')');
+                }, function (error) {
+                    if (error.message === "Session token expired or not valid.") {
+                        $scope.clearCredentials();
+                        $scope.navigateToPage("Your session has expired. Please login again");
+                    }
+                    console.log(error);
+                });
+            }
             $scope.hasLoadedPreview = function () {
                 return $scope.userPreviewData != null;
             };

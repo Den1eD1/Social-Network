@@ -1,4 +1,41 @@
-var socialNetwork = angular.module('socialNetwork', []);
+var socialNetwork = angular.module('socialNetwork', ['ngRoute']);
 
 socialNetwork.constant('baseUrl', 'http://softuni-social-network.azurewebsites.net/api');
 
+socialNetwork.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl:'templates/welcome.html',
+                controller: 'mainController'
+            });
+        $routeProvider
+            .when('/login', {
+                templateUrl:'templates/login.html',
+                controller:'mainController'
+            });
+
+        $routeProvider
+            .when('/register', {
+                templateUrl: 'templates/register.html',
+                controller: 'mainController'
+            });
+        $routeProvider
+            .when('/wall', {
+                templateUrl: 'templates/wall.html',
+                controller: 'mainController'
+            });
+        $routeProvider
+            .when('/friends',
+            {
+                templateUrl:'templates/friends.html',
+                controller: 'mainController'
+            })
+        $routeProvider
+            .when('/editProfile',
+            {
+                templateUrl: 'templates/editProfile.html',
+                controller: 'mainController'
+            })
+    }
+]);
