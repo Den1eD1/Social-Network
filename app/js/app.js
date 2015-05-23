@@ -37,5 +37,20 @@ socialNetwork.config(['$routeProvider',
                 templateUrl: 'templates/editProfile.html',
                 controller: 'mainController'
             })
+        $routeProvider
+            .when('/changePassword', {
+                templateUrl:'templates/changePassword.html',
+                controller: 'mainController'
+            })
+        $routeProvider
+            .when('/search' , {
+                templateUrl: 'templates/search.html',
+                controller: 'mainController'
+            })
+        $routeProvider
+            .when('/addPost', {
+                templateUrl: 'templates/addPost.html',
+                controller: 'mainController'
+            })
     }
 ]);

@@ -1,4 +1,4 @@
-socialNetwork.factory('friendsService',['$http', 'baseUrl', function ($http, baseUrl) {
+socialNetwork.factory('friendsService',['$http', 'baseUrl', '$q', function ($http, baseUrl, $q) {
     var friendsService = {};
     var serviceUrl = baseUrl;
     var urlAttachment = '/me/requests';
@@ -23,6 +23,16 @@ socialNetwork.factory('friendsService',['$http', 'baseUrl', function ($http, bas
             });
     };
 
+    friendsService.SearchByName = function (search) {
+        var deferred = $q.defer();
+        $http.get("http://softuni-social-network.azurewebsites.net/api/users/search?searchTerm=" + search, this.getHeaders())
+            .success(function (data) {
+                deferred.resolve(data);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+        return deferred.promise;
+    };
     friendsService.acceptFriendRequest = function (id, success, error) {
         $http.put(serviceUrl + urlAttachment + id + '?status=approved', {}, {headers: this.getHeaders()})
             .success(function (data) {

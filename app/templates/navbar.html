@@ -1,14 +1,12 @@
 <nav class="navbar navbar-default" ng-controller="mainController">
     <div class="container-fluid">
         <div class="navbar-header">
+            <img ng-src="{{profilePicture}}" alt="" width="80" height="80"/>
             <h4>Hello, {{name}}</h4>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><object data="http://www.bdu.edu.et/emti/sites/bdu.edu.et.emti/files/default_images/no-profile-img.gif" type="image/gif">
-                    <img src="{{profileImage}}" />
-                </object></li>
                 <li><a href="#/wall"> <span class="glyphicon glyphicon-envelope"></span></a></li>
                 <li><a href="#/friends"> <span class="glyphicon glyphicon-user"></span></a></li>
                 <li><a href="#/editProfile"> <span class="glyphicon glyphicon-wrench"></span></a></li>
@@ -17,9 +15,17 @@
             </ul>
             <form  class="navbar-form navbar-left" role="search">
                 <div id="searchBar" class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                    <input type="text" ng-model="searchParameters" ng-keyup="search()" class="form-control" placeholder="Search">
+                    <a href="#/search">  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></a>
                 </div>
+                <ul id="search_results" ng-if="isSearching">
+                    <li ng-repeat="result in searchResults" class="searchResult btn-success" style="display: inline-block;">
+                        <img src="{{result.profileImageData}}" class="resultImage" />
+                        <div style="display: inline;">
+                            <a href="#/User/{{result.username}}" style="color: white;" class="userName" data-id="{{result.username}}" ng-init="setHoverEvents()">{{result.name}}</a>
+                        </div>
+                    </li>
+                </ul>
             </form>
         </div>
     </div>

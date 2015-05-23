@@ -1,6 +1,6 @@
 socialNetwork.controller('postController',
-    ['$scope', 'postService', '$route', 'notifyService', '$routeParams', 'authentication',
-    function ($scope, postService, $route, notifyService, $routeParams, authentication) {
+    ['$scope', 'postService', '$route', 'notifyService', '$routeParams', 'authentication', '$location',
+    function ($scope, postService, $route, notifyService, $location, $routeParams, authentication) {
     $scope.getNewsFeed = function () {
         postService.getNewsFeed(function (serverData) {
             $scope.newsFeed = serverData;
@@ -24,9 +24,9 @@ socialNetwork.controller('postController',
                 Username:postService.getUsername(),
                 postContent:$scope.postContent
             }
+
             postService.createNewPost(postData)
                 .then(function (data) {
-                    $route.reload();
                     postData = {};
                 }, function (err) {
                     console.log(err);
@@ -35,7 +35,7 @@ socialNetwork.controller('postController',
 
      $scope.likePost = function (id) {
          postService.likePost(id, function (serverData) {
-             //TODO $Route
+             $route.reload();
          }, function (serverError) {
              notifyService.showError('there was an error liking the post.');
          });
@@ -43,7 +43,7 @@ socialNetwork.controller('postController',
 
      $scope.unlikePost = function (id) {
          postService.unlikePost(id, function (serverData) {
-             //TODO Route
+             $route.reload()
          }, function (serverError) {
              notifyService.showError('There was an error unliking that post.');
          });

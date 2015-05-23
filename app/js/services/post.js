@@ -65,5 +65,9 @@ socialNetwork.factory('postService', function ($http, baseUrl, $q) {
         return localStorage['username'];
     }
 
+    postService.createComment= function () {
+        $http.post()
+    }
+
     return postService;
 })

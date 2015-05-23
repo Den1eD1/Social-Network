@@ -31,6 +31,16 @@ socialNetwork.controller('friendsController', ['$scope', 'friendsService', 'noti
             });
     };
 
+        $scope.search = function(){
+            friendsService.SearchByName($scope.search.searchTerm)
+                .then(function(data){
+                    console.log(data);
+                    $scope.findedUsers = data;
+                }, function(err){
+                    console.log(err);
+                })
+        };
+
     $scope.getFriendsPreview = function () {
         friendsService.getFriendsPreview(function (serverData) {
             $scope.friendsPreview = serverData;

@@ -4,18 +4,26 @@ socialNetwork.controller('mainController',
 
 
             $scope.username = authentication.getUsername();
-            $scope.profileImage = localStorage['profileImage'];
+            $scope.profilePicture = authentication.getProfileImage();
+
             $scope.name = authentication.getName();
             $scope.isLogged = authentication.isLogged();
 
             $scope.search = function () {
-                authentication.searchUsers($routeParams.id, function (serverData) {
-                    $scope.searchResults = serverData;
-                },
-                    function (serverError) {
-                        notifyService('There was an error with the search.');
-                    });
-            };
+
+                $scope.isSearching = true;
+                if ($scope.searchParameters === '') {
+                    $scope.isSearching = false;
+                }else {
+                    authentication.searchUsers($scope.searchParameters, function (serverData) {
+                            $scope.searchResults = serverData;
+                        },
+                        function (serverError) {
+                            notifyService.showError('There was an error with the search.');
+                        });
+                };
+            }
+
 
             $scope.wallData = function () {
                 authentication.getUserFullData($scope.username, function (serverData) {

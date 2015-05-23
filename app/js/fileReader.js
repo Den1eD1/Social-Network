@@ -23,7 +23,7 @@ $(selector).on('change', '#picture', function () {
         };
         reader.readAsDataURL(file);
     } else {
-        poppy.pop('error', 'Error', 'Type mismatch');
+        notifyService( 'Type mismatch');
     }
 });
 

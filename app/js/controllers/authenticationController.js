@@ -25,18 +25,14 @@ socialNetwork.controller('authenticationController',
           notifyService.showError('Server error','500')
         });
     };
-
             $scope.login = function () {
                 authentication.login($scope.loginData,
                     function(serverData) {
-
                         authentication.SetCredentials(serverData);
                         authentication.getMyData(function (successData) {
                             authentication.setName(successData.name);
                             $scope.name = localStorage['name'];
                             $location.path('/wall');
-                                console.log(successData.name);
-                            authentication.setProfileImage(successData.profileImageData);
                             notifyService.showInfo("Successful Login!");
                         }, function (serverError) {
                             notifyService.showError('error with getMyData');
@@ -132,7 +128,29 @@ socialNetwork.controller('authenticationController',
     }
 
     $scope.changePassword = function () {
-        //TODO After the template is done finish that!!
+        var changePasswordData = {};
+        var oldPassword = $scope.oldPassword;
+        var newPassword= $scope.newPassword;
+        var confirmPassword = $scope.confirmPassword;
+
+        if (oldPassword.length < 0) {
+            notifyService.showError('the old password is not the same');
+        } else if(newPassword !==confirmPassword) {
+            notifyService.showInfo('New password don\'t match with confirm password');
+        } else if(newPassword.length < 6) {
+         notifyService.showError('The password must be at least 6 symbols long');
+        } else{
+            notifyService.showInfo('You have successfully changed your password');
+        }
+        changePasswordData.oldPassword = oldPassword;
+        changePasswordData.newPassword= newPassword;
+        changePasswordData.confirmPassword = confirmPassword;
+        authentication.changePassword(changePasswordData, function (successData) {
+            notifyService.showInfo('you have changed your password successfully!');
+        }, function (error) {
+            notifyService.showError('something went wrong with the server');
+        })
+
     }
 
     $scope.logout = function () {

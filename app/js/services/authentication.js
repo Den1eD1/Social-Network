@@ -47,10 +47,12 @@ socialNetwork.factory('authentication', function ($http, baseUrl) {
             });
     };
     
-    service.searchUsers = function (id, success, error) {
-        var urlAttachment = 'search?searchTerm=' + id;
+    service.searchUsers = function (searchParameters, success, error) {
+        console.log(this.getHeaders());
+        var urlAttachment = '/users/search?searchTerm=' + searchParameters;
         $http.get(serviceUrl + urlAttachment, {headers: this.getHeaders()})
             .success(function (data, status, headers, config) {
+                console.log(data);
                 success(data)
             })
             .error(function (errorData) {
@@ -86,6 +88,13 @@ socialNetwork.factory('authentication', function ($http, baseUrl) {
         return localStorage['userName'];
     };
 
+    service.setProfileImage = function(profileImage) {
+        localStorage['profileImage'] = profileImage;
+    }
+    service.getProfileImage = function () {
+        return localStorage['profileImage'];
+    }
+
     service.clearCredentials = function () {
         localStorage.clear();
     };
@@ -97,9 +106,6 @@ socialNetwork.factory('authentication', function ($http, baseUrl) {
 
     service.getName = function () {
         return localStorage['name'];
-    }
-    service.setProfileImage = function (profileImage) {
-        localStorage['profileImage'] = profileImage;
     }
 
     service.setUserId = function (id) {
