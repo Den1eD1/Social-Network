@@ -25,7 +25,7 @@ socialNetwork.factory('friendsService',['$http', 'baseUrl', '$q', function ($htt
 
     friendsService.SearchByName = function (search) {
         var deferred = $q.defer();
-        $http.get("http://softuni-social-network.azurewebsites.net/api/users/search?searchTerm=" + search, this.getHeaders())
+        $http.get(serviceUrl + '/users/search?searchTerm=' + search, this.getHeaders())
             .success(function (data) {
                 deferred.resolve(data);
             }).error(function (error) {
@@ -53,8 +53,8 @@ socialNetwork.factory('friendsService',['$http', 'baseUrl', '$q', function ($htt
             });
     };
 
-    friendsService.getFriendsPreview = function (success, error) {
-        $http.get(serviceUrl + '/me/friends/preview', {headers:this.getHeaders()})
+    friendsService.getFriendsPreview = function (friendUsername,success, error) {
+        $http.get(serviceUrl + '/users/' + friendUsername +'/friends/preview', {headers:this.getHeaders()})
             .success(function (data) {
                 success(data);
             })

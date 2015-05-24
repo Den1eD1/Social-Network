@@ -1,0 +1,21 @@
+<div class="container"  ng-init="getUserWall()">
+    <div class="fb-profile">
+        <div id="backImageUser" div-back-image="{{searchedUser.coverImageData}}"></div>
+        <img align="left" class="fb-image-profile thumbnail" errsrc ng-src="{{searchedUser.profileImageData}}"
+             alt="Profile image example"/>
+
+        <div class="fb-profile-text">
+            <h3>{{searchedUser.name | uppercase}}</h3>
+            <button ng-click="sendFriendRequest(searchedUser.username)"
+                    ng-show="searchedUser.isFriend ===  false && searchedUser.hasPendingRequest===false" type="button"
+                    class="btn btn-lg btn-success" data-toggle="dropdown" aria-expanded="false"><span
+                    class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Friend
+            </button>
+            <button disabled ng-show="searchedUser.isFriend ===  false && searchedUser.hasPendingRequest===true"
+                    type="button" class="btn btn-lg btn-warning" data-toggle="dropdown" aria-expanded="false"><span
+                    class="glyphicon glyphicon-user" aria-hidden="true"></span> Pending request
+            </button>
+
+        </div>
+    </div>
+</div>

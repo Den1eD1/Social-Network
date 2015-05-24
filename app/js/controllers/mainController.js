@@ -10,7 +10,6 @@ socialNetwork.controller('mainController',
             $scope.isLogged = authentication.isLogged();
 
             $scope.search = function () {
-
                 $scope.isSearching = true;
                 if ($scope.searchParameters === '') {
                     $scope.isSearching = false;
@@ -23,6 +22,8 @@ socialNetwork.controller('mainController',
                         });
                 };
             }
+
+
 
 
             $scope.wallData = function () {
@@ -38,8 +39,7 @@ socialNetwork.controller('mainController',
 
                 authentication.getUserFullData($routeParams.id, function(serverData) {
                     $scope.wallOwner = serverData;
-                    //$('#header').css('background-image', 'url(' + serverData.coverImageData + ')');
-                    $('.header').css('background-image', 'url(' + serverData.coverImageData + ')');
+
                 }, function (error) {
                     if (error.message === "Session token expired or not valid.") {
                         $scope.clearCredentials();

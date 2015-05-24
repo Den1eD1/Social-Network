@@ -122,6 +122,7 @@ socialNetwork.controller('authenticationController',
             authentication.setProfileImage(profileImage);
             authentication.setName(name);
             $route.reload();
+            $location.path('/wall');
         }, function (errorMessage) {
             notifyService.showError('An error occured while trying to edit the profile');
         });
@@ -133,7 +134,7 @@ socialNetwork.controller('authenticationController',
         var newPassword= $scope.newPassword;
         var confirmPassword = $scope.confirmPassword;
 
-        if (oldPassword.length < 0) {
+        if ( oldPassword === undefined|| oldPassword.length < 0 ) {
             notifyService.showError('the old password is not the same');
         } else if(newPassword !==confirmPassword) {
             notifyService.showInfo('New password don\'t match with confirm password');

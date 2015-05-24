@@ -1,3 +1,9 @@
+
+body {
+    font-family: sans-serif;
+font-size: 20px;
+}
+
 .welcome-form {
     float: left;
     width: 400px;
@@ -27,7 +33,7 @@ h1 {
     display: inline-block;
 }
 #searchBar {
-    margin-left: 600px;
+    margin-left: 450px;
 }
 span {
     font-size: 20px;
@@ -62,6 +68,47 @@ input[type="file"] {
     #search_results > li {
         margin: 10px;
     }
-.wallSection {
+#welcome-header {
+text-align: center;
+    margin: 25px;
+}
+#welcome-main{
+    text-align: center;
+    margin: 30px;
+}
+#welcome-main #login:hover {
+
+}
+#welcome-main .reg:hover {
+    background-color: #708291;
+}
+
+#navbar-header h4{
+    position: absolute;
+    top: 100px;
+
+}
+
+#navigation {
+    margin-top: 40px;
+
+}
+
+#profileImg{
+    border: 1px solid #2B3E50;
+}
+
+#navigation h4{
+    margin-left: 30px;
+}
+
+#navigation span {
+    font-size: 30px;
+    margin: 5px;
+
+}
+
+#newPost {
+    margin-left: 220px;
 
 }

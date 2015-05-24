@@ -41,16 +41,24 @@ socialNetwork.controller('friendsController', ['$scope', 'friendsService', 'noti
                 })
         };
 
-    $scope.getFriendsPreview = function () {
-        friendsService.getFriendsPreview(function (serverData) {
-            $scope.friendsPreview = serverData;
+        //should get info about the searched user
+        $scope.getWallOwnerFriendsDetails = function () {
+            if ($routeParams.id === localStorage['username']) {
+                $scope.getFriendsDetails();
+                return;
+            }
+            friendsService.getFriendsDetails($routeParams.id, function (serverData) {
+                $scope.friendsDetails = serverData;
                 console.log(serverData);
-        },
-            function (serverError) {
-                notifyService.showError('There was an error receiving friends review.');
-                console.log(serverError);
+            }, function (error) {
+                if (error.message === "Session token expired or not valid.") {
+                    $scope.clearCredentials();
+                    $scope.navigateToPage("Your session has expired. Please login again");
+                    return;
+                }
+                poppy.pop('error', 'Error', 'There was an error getting the friends details');
             });
-    };
+        }
 
     $scope.getFriendsDetails = function () {
         friendsService.getFriendsDetails(function (serverData) {

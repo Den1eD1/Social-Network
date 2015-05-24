@@ -1,6 +1,6 @@
 
 <div ng-include="'templates/navbar.html'"></div>
-<a href="#/addPost"><button class="btn btn-md btn-info">Add post</button></a>
+<a  id="newPost" href="#/addPost"><button class="btn btn-md btn-info">Add post</button></a>
 <section class="wallSection">
     <div id="main">
         <div class="main" ng-controller="postController" ng-init="getOwnerPosts()">
@@ -23,7 +23,7 @@
                         <textarea style="background: #c0c0c0" name cols="60" rows="4" id="userCommentContent{{post.id}}"></textarea>
                         <div style="text-align: right;">
                             <span class="cancelButton btn-danger" ng-click="cancelComment(post.id)">Cancel</span>
-                            <span class="submitButton btn-primary" ng-click="submitComment(post.id)">Submit</span>
+                            <span class="submitButton btn-primary" ng-click="createComment(post.id)">Submit</span>
                         </div>
                     </div>
                     <div id="comments-{{post.id}}" style="display: none;">

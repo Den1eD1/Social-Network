@@ -52,5 +52,10 @@ socialNetwork.config(['$routeProvider',
                 templateUrl: 'templates/addPost.html',
                 controller: 'mainController'
             })
+        $routeProvider
+            .when('/User/:id',{
+                templateUrl: 'templates/userWall.html',
+                controller: 'mainController'
+            })
     }
 ]);

@@ -28,8 +28,9 @@ socialNetwork.controller('postController',
             postService.createNewPost(postData)
                 .then(function (data) {
                     postData = {};
+                    notifyService.showInfo('Post added successfully');
                 }, function (err) {
-                    console.log(err);
+                    notifyService.showError('there was an error creating the post');
                 })
         };
 
@@ -48,4 +49,20 @@ socialNetwork.controller('postController',
              notifyService.showError('There was an error unliking that post.');
          });
      };
+
+     $scope.createComment = function (id) {
+         var Comment = $('#userComment' + id);
+         var commentContent = $('#userCommentContent' + id);
+         var content = commentContent.val();
+
+         postService.createComment(id, content, function (serverData) {
+             $route.reload();
+             notifyService.showInfo('comment posted successfully.');
+         }, function (serverError) {
+             notifyService.showError('there was an error posting that comment.');
+         })
+
+         CommentContent.val('');
+         Comment.css('display', 'none');
+     }
 }]);
