@@ -1,7 +1,8 @@
+<div ng-include="'templates/welcome-header.html'"></div>
 <section class="welcome-form right">
     <form class="form-horizontal" ng-controller="authenticationController" ng-submit="register()">
         <fieldset>
-            <legend>register</legend>
+            <legend>Register</legend>
             <div class="form-group">
                 <label for="regUsername" class="col-md-4 control-label">Username</label>
                 <div class="col-md-6">
@@ -33,33 +34,12 @@
                     <input ng-model="registerData.email" type="text" class="form-control" id="inputEmail" placeholder="Email">
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label">Gender</label>
-                <div class="col-md-6">
-                    <div class="radio">
-                        <label>
-                            <input ng-model="gender" type="radio" name="optionsRadios" id="male" value="0" checked="true">
-                            Male
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input ng-model="gender" type="radio" name="optionsRadios" id="female" value="1">
-                            Female
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input ng-model="gender" type="radio" name="optionsRadios" id="other" value="2">
-                            Other
-                        </label>
-                    </div>
-                </div>
-            </div>
+
             <div class="form-group">
                 <div class="col-md-6 col-lg-offset-4">
 
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-danger reg">Register</button><span>or</span>
+                    <a href="#/login">Login</a>
                 </div>
             </div>
         </fieldset>

@@ -1,11 +1,14 @@
 
 <div ng-include="'templates/navbar.html'"></div>
-<a  id="newPost" href="#/addPost"><button class="btn btn-md btn-info">Add post</button></a>
+
 <section class="wallSection">
     <div id="main">
+
+        <h1 id="feed" >News feed</h1>
+        <a  id="newPost" href="#/addPost"><button id="postButton" class="btn btn-md btn-info">Add post</button></a>
         <div class="main" ng-controller="postController" ng-init="getOwnerPosts()">
             <ul style="list-style-type: none">
-                <li style="border: 1px solid #F0AD4E; margin: 20px; width: 50%;" ng-repeat="post in wallPosts" class="btn-default post">
+                <li style="border: 1px solid #F0AD4E; margin: 10px; width: 50%;" ng-repeat="post in wallPosts" class="btn-default post">
                     <img src="{{post.author.profileImageData}}" class="smallThumbnail" alt="" style="margin: 10px;"/>
                     <div style="display: inline;">
                         <a href="#/User/{{post.author.username}}" class="userName" data-id="{{post.author.username}}">{{post.author.name}}</a>

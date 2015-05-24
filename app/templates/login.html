@@ -1,8 +1,10 @@
+<div ng-include="'templates/welcome-header.html'"></div>
+
 <div id="container" >
     <section class="welcome-form left" >
         <form class="form-horizontal"  ng-controller="authenticationController" ng-submit="login()">
             <fieldset>
-                <legend>login</legend>
+                <legend>Login</legend>
                 <div class="form-group">
                     <label for="inputUsername" class="col-md-4 control-label">Username</label>
                     <div class="col-md-6">
@@ -19,6 +21,8 @@
                 <div class="form-group">
                     <div class="col-md-6 col-lg-offset-4">
                         <button type="submit" class="btn btn-primary">Login</button>
+                        <span> or</span>
+                        <a href="#/register" style="color: #D9534F">Register</a>
 
                     </div>
                 </div>

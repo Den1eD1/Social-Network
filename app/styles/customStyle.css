@@ -2,22 +2,26 @@
 body {
     font-family: sans-serif;
 font-size: 20px;
+    background-color: #4E5D6C;
 }
 
 .welcome-form {
     float: left;
     width: 400px;
-    background-color: #4E5D6C;
+    background-color: #2B3E50;
     height: 450px;
     text-align: center;
 }
 .left{
-    margin-left: 20%;
+    margin-left: 35%;
     margin-right: 3%;
     margin-top: 5%;
 }
 .right{
     margin-top: 5%;
+    margin-left: 35%;
+    margin-right: 3%;
+
 }
     .welcome-form legend {
         text-align: center;
@@ -71,6 +75,7 @@ input[type="file"] {
 #welcome-header {
 text-align: center;
     margin: 25px;
+    border-bottom: 1px solid #708291;
 }
 #welcome-main{
     text-align: center;
@@ -88,6 +93,9 @@ text-align: center;
     top: 100px;
 
 }
+#navigation-bar {
+    background-color: #2B3E50;
+}
 
 #navigation {
     margin-top: 40px;
@@ -95,7 +103,13 @@ text-align: center;
 }
 
 #profileImg{
-    border: 1px solid #2B3E50;
+    border: 1px solid #DF692A;
+}
+
+#coverPictureData{
+    border: 1px solid #2b3e50;
+    width: 250px;
+    height: 100px;
 }
 
 #navigation h4{
@@ -109,6 +123,30 @@ text-align: center;
 }
 
 #newPost {
+
     margin-left: 220px;
 
+}
+
+#postButton {
+    margin-top: 100px!important;
+}
+
+.newPost {
+    margin: 0 auto;
+    width: 800px!important;
+}
+
+textarea#styled {
+    width: 600px;
+    height: 120px;
+    border: 3px solid #cccccc;
+    padding: 5px;
+}
+#textArea {
+    width: 200px;
+}
+
+#feed {
+    border-bottom: 1px solid #2B3E50;
 }

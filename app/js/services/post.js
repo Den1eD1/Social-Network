@@ -40,8 +40,8 @@ socialNetwork.factory('postService', function ($http, baseUrl, $q) {
             .success(function (data) {
                 success(data);
             })
-            .error(function (data) {
-                error(error);
+            .error(function (error) {
+                  error(error);
             });
     };
 
@@ -63,18 +63,7 @@ socialNetwork.factory('postService', function ($http, baseUrl, $q) {
 
     postService.getUsername = function () {
         return localStorage['username'];
-    }
-
-    postService.createComment= function (postId, comment, success, error) {
-        $http.post(serviceUrl + '/posts/' + postId + '/comments',
-            {commentContent: comment},
-            {headers: this.getHeaders()},
-            function (successData) {
-                success(successData);
-            }, function (errorData) {
-                error(errorData);
-            })
-    }
+    };
 
     return postService;
 })
